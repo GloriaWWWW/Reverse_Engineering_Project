@@ -1,0 +1,6 @@
+{
+  "rate_hz": 4.2,
+  "amplitude": 5.016,
+  "tau_ms": 2.981,
+  "refractory_ms": 2.0
+}
