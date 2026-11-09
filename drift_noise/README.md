@@ -11,48 +11,52 @@ The background voltage is modeled as the sum of two components:
 - **Drift:** A slowly varying baseline modeled by a sine function.
 - **Noise:** Random background fluctuations modeled by a Gaussian distribution.
 
+### Parameter Estimation
+
+A **running median (101 samples)** was first used to estimate the baseline. It calculates the median voltage within a moving window, reducing the influence of large spikes.
+
+After detecting and excluding spike regions, a sine function was fitted to the remaining data to estimate the drift parameters. The fitted drift was then subtracted, and the remaining spike-free samples were used to estimate the noise standard deviation.
+
 ### Parameters from Original Data
 
-| Parameter | Value |
-|---|---:|
-| Drift offset (B) | 0.0032 V |
-| Drift amplitude (A) | 0.6475 V |
-| Drift frequency (f) | 0.0909 Hz |
-| Drift phase (φ) | 0.2826 rad |
-| Noise mean (μ) | ≈ 0 V |
-| Noise SD (σ) | 0.2990 V |
+| Parameter | Value | Source |
+|---|---:|---|
+| Drift offset (B) | 0.0032 V | Estimated from data |
+| Drift amplitude (A) | 0.6475 V | Estimated from data |
+| Drift frequency (f) | 0.0909 Hz | Estimated from data |
+| Drift phase (φ) | 0.2826 rad | Estimated from data |
+| Noise mean (μ) | 0 V | Assumed for simulation |
+| Noise SD (σ) | 0.2990 V | Estimated from data |
 
-The estimated parameters are saved in `drift_noise_params.json`.
+The sine function and Gaussian distribution were chosen as simplified models. The estimated parameters are saved in `drift_noise_params.json`.
 
-## 1. Drift Simulation
+## 1. Drift Estimation
 
-The drift is generated using a sine function:
+A sine function was fitted to the original recording after excluding spike regions.
 
 `D(t) = B + A sin(2πft + φ)`
 
 ![Drift Estimation](figures/drift_fit.png)
 
-The fitted sine wave reproduces the slow baseline variation observed in the original recording.
+The fitted sine wave was used to estimate the drift parameters.
 
-## 2. Noise Simulation
+## 2. Noise Estimation
 
-Background noise is generated using a zero-mean Gaussian distribution:
-
-`N(t) ~ Normal(0, 0.2990²)`
+After removing the fitted drift and excluding spike regions, the remaining residuals were used to estimate the noise standard deviation.
 
 ![Noise Distribution](figures/noise_distribution.png)
 
-The estimated noise standard deviation is approximately 0.299 V.
+The estimated noise standard deviation was 0.2990 V. Gaussian noise with zero mean was assumed for simulation.
 
-## 3. Simulated Background
+## 3. Background Simulation
 
-The simulated drift and noise are combined to generate the background signal:
+The estimated parameters were used to generate a new background signal.
 
 `background(t) = D(t) + N(t)`
 
 ![Simulated Background](figures/simulation.png)
 
-The simulated background reproduces the slow baseline drift and random voltage fluctuations.
+The simulated background combines the fitted sinusoidal drift model with newly generated Gaussian noise.
 
 ## Files
 
