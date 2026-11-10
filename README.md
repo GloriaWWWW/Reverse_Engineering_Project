@@ -3,7 +3,7 @@
 Course project for **Data Science & Advanced Python**.
 Team: Mariya Zastenskaya, Gloria, Amarnath.
 
-**Final Working Code:** **[FINAL_Reverse_Engineering.ipynb](FINAL_Reverse_Engineering.ipynb)**.
+**Final Working Code:** **[Python_Reverse_Eng.ipynb](Python_Reverse_Eng.ipynb)**.
 
 The final notebook contains the signal analysis, reconstruction, and evaluation code for the inter-team competition.
 
