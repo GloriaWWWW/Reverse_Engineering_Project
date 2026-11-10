@@ -1,4 +1,4 @@
-"""Run with: python -m unittest full_simulation.test_integration"""
+"""Run from the project root: python -m unittest testing.test_integration"""
 import json
 import unittest
 from pathlib import Path
