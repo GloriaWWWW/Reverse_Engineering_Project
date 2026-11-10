@@ -1,7 +1,5 @@
 # Full Spike Recording Simulation and Validation
 
-**Team integration:** Drift & Noise module + Mariya Zastenskaya's Spikes module.
-
 ## Model
 
 The simulated extracellular voltage is the sum of three components:
@@ -32,8 +30,8 @@ The model reads `drift_noise/drift_noise_params.json` and `spikes/spike_params.j
 
 ```bash
 python -m pip install numpy scipy matplotlib
-python -m full_simulation.run_simulation
-python -m unittest full_simulation.test_integration
+python testing/run_simulation.py
+python -m unittest testing.test_integration
 ```
 
 The script creates one simulated 10-second trace (seed 42), evaluates 300 simulations, and regenerates all figures and output files. Run it from the project root, with both team modules and the original data available. The spike module must support `generate(n, fs, rate_hz, amplitude, tau_ms, refractory_ms, rng=...)`.
