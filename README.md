@@ -3,6 +3,12 @@
 Course project for **Data Science & Advanced Python**.
 Team: Mariya Zastenskaya, Gloria, Amarnath.
 
+**Final Working Code: Python_Reverse_Eng.ipynb**
+
+The final notebook contains the signal analysis, reconstruction, and evaluation code for the inter-team competition.
+
+
+
 We find the process that generated `data/spike_data.npz` (10 s, 1000 Hz), simulate it, extend it by 10 s,
 and score how close any simulation is to the original.
 
@@ -32,7 +38,7 @@ The evidence for every component, and why we did not use the other models propos
 
 | File | What |
 |---|---|
-| `reverse_engineering.ipynb` | Colab notebook: all code, the evidence, plots, calibration |
+| `Python_Reverse_Eng.ipynb` | Colab notebook: all code, the evidence, plots, calibration |
 | `spike_simulator.py` | the model: `fit_model`, `simulate`, `make_results` |
 | `testing_module.py` | **testing module**: how close is a simulation to the original (score 0–100) |
 | `results/simulated_spike_data.npz` | **main result**: a fully simulated 20 s recording, same structure as the original |
